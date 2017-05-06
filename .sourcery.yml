@@ -1,0 +1,5 @@
+sources:
+    - Paparazzi
+templates:
+    - Templates
+output: Paparazzi
