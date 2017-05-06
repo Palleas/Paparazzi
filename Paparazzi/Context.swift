@@ -14,6 +14,6 @@ struct DefaultContext: ContextProtocol {
     
     let title = "Default"
     
-    let path = NSSearchPathForDirectoriesInDomains(.desktopDirectory, .userDomainMask, true).first!
+    let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
 
 }

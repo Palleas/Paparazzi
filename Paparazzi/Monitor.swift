@@ -7,15 +7,24 @@ enum MonitorError: Error {
     case missingAttribute(String)
 }
 
+
 final class Monitor {
     
-    let query: NSMetadataQuery = {
-        // TODO: update query to search *new* items
-        $0.predicate = NSPredicate(format: "kMDItemIsScreenCapture = 1")
-        $0.searchScopes = [NSMetadataQueryUserHomeScope]
-
-        return $0
-    }(NSMetadataQuery())
+    private let query: NSMetadataQuery
+    
+    private var desktopDirectory: String {
+        guard let desktop = NSSearchPathForDirectoriesInDomains(.desktopDirectory, .userDomainMask, true).first else {
+            fatalError("User has no desktop, call the priest!")
+        }
+        
+        return desktop
+    }
+    
+    init() {
+        query = NSMetadataQuery()
+        query.predicate = NSPredicate(format: "kMDItemIsScreenCapture = 1")
+        query.searchScopes = [desktopDirectory]
+    }
     
     func screenshots() -> SignalProducer<[ScreenShot], MonitorError> {
         let screenshots = watch(self.query)
