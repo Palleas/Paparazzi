@@ -1,6 +1,6 @@
 import Foundation
 
-protocol ContextProtocol {
+protocol ContextProtocol: AutoEquatable {
     
     /// The title of the context
     var title: String { get }

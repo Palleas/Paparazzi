@@ -23,6 +23,19 @@ fileprivate func compareArrays<T>(lhs: [T], rhs: [T], compare: (_ lhs: T, _ rhs:
 }
 
 // MARK: - AutoEquatable for classes, protocols, structs
+// MARK: - ContextProtocol AutoEquatable
+internal func == (lhs: ContextProtocol, rhs: ContextProtocol) -> Bool {
+    guard lhs.title == rhs.title else { return false }
+    guard lhs.path == rhs.path else { return false }
+    return true
+}
+// MARK: - DefaultContext AutoEquatable
+extension DefaultContext: Equatable {} 
+internal func == (lhs: DefaultContext, rhs: DefaultContext) -> Bool {
+    guard lhs.title == rhs.title else { return false }
+    guard lhs.path == rhs.path else { return false }
+    return true
+}
 // MARK: - ScreenShot AutoEquatable
 extension ScreenShot: Equatable {} 
 internal func == (lhs: ScreenShot, rhs: ScreenShot) -> Bool {
