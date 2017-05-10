@@ -2,14 +2,17 @@
 // DO NOT EDIT
 
 // swiftlint:disable file_length
+
+import Foundation
+
 // MARK: - Sluggable for classes, protocols, structs
 extension Directory {
     var slug: String {
         let _merged = [
             path
-        ].joined("-")
+        ].joined(separator: "-")
 
-        return slugify(merged)
+        return slugify(_merged)
     }
 }
 

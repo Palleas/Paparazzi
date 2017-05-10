@@ -1,4 +1,4 @@
-// Generated using Sourcery 0.5.9 — https://github.com/krzysztofzablocki/Sourcery
+// Generated using Sourcery 0.6.0 — https://github.com/krzysztofzablocki/Sourcery
 // DO NOT EDIT
 
 // swiftlint:disable file_length
@@ -23,6 +23,13 @@ fileprivate func compareArrays<T>(lhs: [T], rhs: [T], compare: (_ lhs: T, _ rhs:
 }
 
 // MARK: - AutoEquatable for classes, protocols, structs
+// MARK: - Context AutoEquatable
+extension Context: Equatable {} 
+internal func == (lhs: Context, rhs: Context) -> Bool {
+    guard lhs.title == rhs.title else { return false }
+    guard lhs.path == rhs.path else { return false }
+    return true
+}
 // MARK: - ContextProtocol AutoEquatable
 internal func == (lhs: ContextProtocol, rhs: ContextProtocol) -> Bool {
     guard lhs.title == rhs.title else { return false }

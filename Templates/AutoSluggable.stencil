@@ -1,4 +1,7 @@
 // swiftlint:disable file_length
+
+import Foundation
+
 // MARK: - Sluggable for classes, protocols, structs
 {% for type in types.implementing.AutoSluggable %}{% if not type.kind == "enum" %}
 extension {{ type.name }} {
@@ -7,9 +10,9 @@ extension {{ type.name }} {
         {% if variable.annotations.includeInSlug %}
             {{ variable.name }}{% ifnot forloop.last %},{% endif %}
         {% endif %}
-        {% endfor %}].joined("-")
+        {% endfor %}].joined(separator: "-")
 
-        return slugify(merged)
+        return slugify(_merged)
     }
 }
 {% endif %}
