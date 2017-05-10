@@ -24,8 +24,19 @@
 		7A867E8E1EBD7344009E6512 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A867E8C1EBD7344009E6512 /* Main.storyboard */; };
 		7A867E921EBE2EF1009E6512 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A867E911EBE2EF1009E6512 /* MenuController.swift */; };
 		7A94B3F11EC3C061007CAC2A /* AutoList.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A94B3F01EC3C061007CAC2A /* AutoList.generated.swift */; };
+		7A94B3F91EC3C92D007CAC2A /* PaparazziTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A94B3F81EC3C92D007CAC2A /* PaparazziTests.swift */; };
 		7AC149321EBC48F80075B295 /* Monitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC149311EBC48F80075B295 /* Monitor.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7A94B3FB1EC3C92D007CAC2A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7A16BE211EBC457600D89485 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7A16BE281EBC457600D89485;
+			remoteInfo = Paparazzi;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		7A16BE431EBC471100D89485 /* Embed Frameworks */ = {
@@ -60,6 +71,9 @@
 		7A867E8D1EBD7344009E6512 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7A867E911EBE2EF1009E6512 /* MenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
 		7A94B3F01EC3C061007CAC2A /* AutoList.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoList.generated.swift; sourceTree = "<group>"; };
+		7A94B3F61EC3C92D007CAC2A /* PaparazziTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PaparazziTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A94B3F81EC3C92D007CAC2A /* PaparazziTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaparazziTests.swift; sourceTree = "<group>"; };
+		7A94B3FA1EC3C92D007CAC2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7AC149311EBC48F80075B295 /* Monitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Monitor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -73,6 +87,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7A94B3F31EC3C92D007CAC2A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -82,6 +103,7 @@
 				7A16BE3D1EBC471100D89485 /* ReactiveSwift.framework */,
 				7A16BE3E1EBC471100D89485 /* Result.framework */,
 				7A16BE2B1EBC457600D89485 /* Paparazzi */,
+				7A94B3F71EC3C92D007CAC2A /* PaparazziTests */,
 				7A16BE2A1EBC457600D89485 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -90,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				7A16BE291EBC457600D89485 /* Paparazzi.app */,
+				7A94B3F61EC3C92D007CAC2A /* PaparazziTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -148,6 +171,15 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		7A94B3F71EC3C92D007CAC2A /* PaparazziTests */ = {
+			isa = PBXGroup;
+			children = (
+				7A94B3F81EC3C92D007CAC2A /* PaparazziTests.swift */,
+				7A94B3FA1EC3C92D007CAC2A /* Info.plist */,
+			);
+			path = PaparazziTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -169,6 +201,24 @@
 			productReference = 7A16BE291EBC457600D89485 /* Paparazzi.app */;
 			productType = "com.apple.product-type.application";
 		};
+		7A94B3F51EC3C92D007CAC2A /* PaparazziTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A94B3FD1EC3C92D007CAC2A /* Build configuration list for PBXNativeTarget "PaparazziTests" */;
+			buildPhases = (
+				7A94B3F21EC3C92D007CAC2A /* Sources */,
+				7A94B3F31EC3C92D007CAC2A /* Frameworks */,
+				7A94B3F41EC3C92D007CAC2A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7A94B3FC1EC3C92D007CAC2A /* PBXTargetDependency */,
+			);
+			name = PaparazziTests;
+			productName = PaparazziTests;
+			productReference = 7A94B3F61EC3C92D007CAC2A /* PaparazziTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -183,6 +233,12 @@
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = 8VS9JKFDZS;
 						ProvisioningStyle = Automatic;
+					};
+					7A94B3F51EC3C92D007CAC2A = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = 8VS9JKFDZS;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 7A16BE281EBC457600D89485;
 					};
 				};
 			};
@@ -200,6 +256,7 @@
 			projectRoot = "";
 			targets = (
 				7A16BE281EBC457600D89485 /* Paparazzi */,
+				7A94B3F51EC3C92D007CAC2A /* PaparazziTests */,
 			);
 		};
 /* End PBXProject section */
@@ -211,6 +268,13 @@
 			files = (
 				7A16BE311EBC457600D89485 /* Assets.xcassets in Resources */,
 				7A867E8E1EBD7344009E6512 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A94B3F41EC3C92D007CAC2A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,7 +300,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7A94B3F21EC3C92D007CAC2A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A94B3F91EC3C92D007CAC2A /* PaparazziTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7A94B3FC1EC3C92D007CAC2A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7A16BE281EBC457600D89485 /* Paparazzi */;
+			targetProxy = 7A94B3FB1EC3C92D007CAC2A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		7A867E8C1EBD7344009E6512 /* Main.storyboard */ = {
@@ -378,6 +458,36 @@
 			};
 			name = Release;
 		};
+		7A94B3FE1EC3C92D007CAC2A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 8VS9JKFDZS;
+				INFOPLIST_FILE = PaparazziTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.buddybuild.PaparazziTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Paparazzi.app/Contents/MacOS/Paparazzi";
+			};
+			name = Debug;
+		};
+		7A94B3FF1EC3C92D007CAC2A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 8VS9JKFDZS;
+				INFOPLIST_FILE = PaparazziTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.buddybuild.PaparazziTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Paparazzi.app/Contents/MacOS/Paparazzi";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -398,6 +508,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		7A94B3FD1EC3C92D007CAC2A /* Build configuration list for PBXNativeTarget "PaparazziTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A94B3FE1EC3C92D007CAC2A /* Debug */,
+				7A94B3FF1EC3C92D007CAC2A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
