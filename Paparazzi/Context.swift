@@ -17,3 +17,12 @@ struct DefaultContext: ContextProtocol {
     let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
 
 }
+
+
+struct Context: ContextProtocol {
+
+    let title: String
+    
+    let path: String
+    
+}

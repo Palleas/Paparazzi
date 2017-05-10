@@ -8,6 +8,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private let manager = ScreenshotsManager(monitor: Monitor())
     
     private var disposable: Disposable?
+    private var menu = NSMenu(title: "Paparazzi")
+    private let menuController = MenuController(statusItem: NSStatusBar.system().statusItem(withLength: NSSquareStatusItemLength))
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         disposable = manager.manage().logEvents().start()
