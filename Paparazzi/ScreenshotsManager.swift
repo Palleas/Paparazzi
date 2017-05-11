@@ -27,7 +27,7 @@ final class ScreenshotsManager {
         let manager = FileManager.default
         
         // Add proper number
-        let target = (context.path as NSString).appendingPathComponent(UUID().uuidString)
+        let target = (context.title as NSString).appendingPathComponent(UUID().uuidString)
         return Result {
             print("Moving file from \(screenshot.path) to \(target)")
             try manager.moveItem(atPath: screenshot.path, toPath: target)

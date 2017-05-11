@@ -9,9 +9,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     private var disposable: Disposable?
     private var menu = NSMenu(title: "Paparazzi")
-    private let menuController = MenuController(statusItem: NSStatusBar.system().statusItem(withLength: NSSquareStatusItemLength))
+    
+    private var contextController: ContextController!
+    private var menuController: MenuController!
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        let documents = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first
+        self.contextController = ContextController(root: documents.flatMap(Directory.init)!)
+        
+        self.menuController = MenuController(statusItem: NSStatusBar.system().statusItem(withLength: NSSquareStatusItemLength), contextController: contextController)
+        
         disposable = manager.manage().logEvents().start()
     }
 

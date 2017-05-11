@@ -1,28 +1,54 @@
 import Foundation
 import Cocoa
 
-protocol MenuControllerDelegate: class {
-    func didCreate(context: String)
-}
-
 final class MenuController {
     private let statusItem: NSStatusItem
     
-    weak var delegate: MenuControllerDelegate?
+    private let contextController: ContextController
     
-    init(statusItem: NSStatusItem) {
+    init(statusItem: NSStatusItem, contextController: ContextController) {
         self.statusItem = statusItem
+        self.contextController = contextController
+        
         statusItem.title = "📷"
         
         // Build menu
-        statusItem.menu = buildMenu()
+        contextController.all.producer.logEvents().startWithValues { [weak self] in
+            self?.statusItem.menu = self?.createMenu(with: $0)
+        }
     }
     
-    func buildMenu() -> NSMenu {
+    func createMenu(with contexts: [Context]) -> NSMenu {
+        print("Building menu")
         let menu = NSMenu()
         menu.addItem(withTitle: "New context...", action: #selector(didTapAddContext), keyEquivalent: "N").target = self
         
+        guard !contexts.isEmpty else { return menu }
+        
+        menu.addItem(.separator())
+        contexts
+            .enumerated()
+            .map { offset, element in
+                let item = NSMenuItem(title: element.title, action: #selector(didSelect(item:)), keyEquivalent: "")
+                item.tag = offset
+                item.target = self
+
+                return item
+            }
+            .forEach(menu.addItem)
+        
         return menu
+    }
+    
+    @objc
+    func didSelect(item: NSMenuItem) {
+        let contexts = self.contextController.all.value
+        guard item.tag >= 0 && item.tag < contexts.count else {
+            fatalError("Invalid context!")
+        }
+        
+        let context = contexts[item.tag]
+        print("You have selected \(context.title)")
     }
     
     @objc
@@ -42,7 +68,7 @@ final class MenuController {
         let contextName = contextField.stringValue
         print("Creating context with name: \(contextName)")
         
-        delegate?.didCreate(context: contextName)
+        _ = contextController.createContext(withName: contextName)
     }
     
     

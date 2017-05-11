@@ -6,6 +6,30 @@
 import Foundation
 
 // MARK: - Sluggable for classes, protocols, structs
+extension Context {
+    var slug: String {
+        let _merged = [
+        ].joined(separator: "-")
+
+        return slugify(_merged)
+    }
+}
+extension ContextProtocol {
+    var slug: String {
+        let _merged = [
+        ].joined(separator: "-")
+
+        return slugify(_merged)
+    }
+}
+extension DefaultContext {
+    var slug: String {
+        let _merged = [
+        ].joined(separator: "-")
+
+        return slugify(_merged)
+    }
+}
 extension Directory {
     var slug: String {
         let _merged = [
