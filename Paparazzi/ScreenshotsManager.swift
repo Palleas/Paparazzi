@@ -2,13 +2,6 @@ import Foundation
 import ReactiveSwift
 import Result
 
-
-struct Directory: AutoSluggable {
-    // sourcery: includeInSlug
-    let path: String
-
-}
-
 final class ScreenshotsManager {
     
     enum ManagerError: Error {
@@ -35,7 +28,7 @@ final class ScreenshotsManager {
             .attemptMap(move)
     }
     
-    func move(_ screenshot: ScreenShot, to context: ContextProtocol) -> Result<(), ManagerError>  {
+    func move(_ screenshot: ScreenShot, to context: Context) -> Result<(), ManagerError>  {
         let manager = FileManager.default
 
         // Add proper number
@@ -58,7 +51,6 @@ final class ScreenshotsManager {
         
         let newScreenshots = monitor
             .screenshots()
-            .logEvents(identifier: "Screenshots")
             .ignoreErrors()
             .map { screenshots in screenshots
                 .filter { $0.changedAt >= startedAt }

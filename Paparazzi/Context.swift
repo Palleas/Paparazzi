@@ -1,22 +1,19 @@
 import Foundation
+import Unbox
 
-protocol ContextProtocol: AutoEquatable, AutoSluggable {
-    
+
+struct Context: AutoEquatable, AutoSluggable {
+
     /// The title of the context
     /// sourcery: includeInSlug
-    var title: String { get }
-
-}
-
-struct DefaultContext: ContextProtocol {
-    
-    let title = "Default"
-
-}
-
-
-struct Context: ContextProtocol {
-
     let title: String
 
+}
+
+extension Context: Unboxable {
+    
+    init(unboxer: Unboxer) throws {
+        self.title = try unboxer.unbox(key: "title")
+    }
+    
 }

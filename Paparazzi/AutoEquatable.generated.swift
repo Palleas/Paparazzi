@@ -29,17 +29,6 @@ internal func == (lhs: Context, rhs: Context) -> Bool {
     guard lhs.title == rhs.title else { return false }
     return true
 }
-// MARK: - ContextProtocol AutoEquatable
-internal func == (lhs: ContextProtocol, rhs: ContextProtocol) -> Bool {
-    guard lhs.title == rhs.title else { return false }
-    return true
-}
-// MARK: - DefaultContext AutoEquatable
-extension DefaultContext: Equatable {} 
-internal func == (lhs: DefaultContext, rhs: DefaultContext) -> Bool {
-    guard lhs.title == rhs.title else { return false }
-    return true
-}
 // MARK: - ScreenShot AutoEquatable
 extension ScreenShot: Equatable {} 
 internal func == (lhs: ScreenShot, rhs: ScreenShot) -> Bool {

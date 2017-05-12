@@ -26,6 +26,9 @@
 		7A94B3F11EC3C061007CAC2A /* AutoList.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A94B3F01EC3C061007CAC2A /* AutoList.generated.swift */; };
 		7A94B3F91EC3C92D007CAC2A /* PaparazziTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A94B3F81EC3C92D007CAC2A /* PaparazziTests.swift */; };
 		7AC149321EBC48F80075B295 /* Monitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC149311EBC48F80075B295 /* Monitor.swift */; };
+		7AC49EF41EC664F200A351D8 /* FileSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC49EF31EC664F200A351D8 /* FileSystem.swift */; };
+		7AC49EF61EC66BC400A351D8 /* Unbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AC49EF51EC66BC400A351D8 /* Unbox.framework */; };
+		7AC49EF71EC66BC400A351D8 /* Unbox.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7AC49EF51EC66BC400A351D8 /* Unbox.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +48,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				7AC49EF71EC66BC400A351D8 /* Unbox.framework in Embed Frameworks */,
 				7A16BE401EBC471100D89485 /* ReactiveSwift.framework in Embed Frameworks */,
 				7A16BE421EBC471100D89485 /* Result.framework in Embed Frameworks */,
 			);
@@ -75,6 +79,8 @@
 		7A94B3F81EC3C92D007CAC2A /* PaparazziTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaparazziTests.swift; sourceTree = "<group>"; };
 		7A94B3FA1EC3C92D007CAC2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7AC149311EBC48F80075B295 /* Monitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Monitor.swift; sourceTree = "<group>"; };
+		7AC49EF31EC664F200A351D8 /* FileSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileSystem.swift; sourceTree = "<group>"; };
+		7AC49EF51EC66BC400A351D8 /* Unbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Unbox.framework; path = Carthage/Build/Mac/Unbox.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7AC49EF61EC66BC400A351D8 /* Unbox.framework in Frameworks */,
 				7A16BE3F1EBC471100D89485 /* ReactiveSwift.framework in Frameworks */,
 				7A16BE411EBC471100D89485 /* Result.framework in Frameworks */,
 			);
@@ -100,6 +107,7 @@
 		7A16BE201EBC457600D89485 = {
 			isa = PBXGroup;
 			children = (
+				7AC49EF51EC66BC400A351D8 /* Unbox.framework */,
 				7A16BE3D1EBC471100D89485 /* ReactiveSwift.framework */,
 				7A16BE3E1EBC471100D89485 /* Result.framework */,
 				7A16BE2B1EBC457600D89485 /* Paparazzi */,
@@ -130,6 +138,7 @@
 				7A867E881EBD6C56009E6512 /* ScreenshotsManager.swift */,
 				7A867E911EBE2EF1009E6512 /* MenuController.swift */,
 				7A3767A41EC36DA50062BCA5 /* ContextController.swift */,
+				7AC49EF31EC664F200A351D8 /* FileSystem.swift */,
 			);
 			path = Paparazzi;
 			sourceTree = "<group>";
@@ -295,6 +304,7 @@
 				7A867E821EBD6BA1009E6512 /* Search.swift in Sources */,
 				7A3767A51EC36DA50062BCA5 /* ContextController.swift in Sources */,
 				7A94B3F11EC3C061007CAC2A /* AutoList.generated.swift in Sources */,
+				7AC49EF41EC664F200A351D8 /* FileSystem.swift in Sources */,
 				7A867E891EBD6C56009E6512 /* ScreenshotsManager.swift in Sources */,
 				7A16BE2D1EBC457600D89485 /* AppDelegate.swift in Sources */,
 			);
@@ -516,6 +526,7 @@
 				7A94B3FF1EC3C92D007CAC2A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

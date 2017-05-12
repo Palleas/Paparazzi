@@ -9,23 +9,7 @@ import Foundation
 extension Context {
     var slug: String {
         let _merged = [
-        ].joined(separator: "-")
-
-        return slugify(_merged)
-    }
-}
-extension ContextProtocol {
-    var slug: String {
-        let _merged = [
             title
-        ].joined(separator: "-")
-
-        return slugify(_merged)
-    }
-}
-extension DefaultContext {
-    var slug: String {
-        let _merged = [
         ].joined(separator: "-")
 
         return slugify(_merged)

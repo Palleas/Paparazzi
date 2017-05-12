@@ -12,10 +12,24 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     private var contextController: ContextController!
     private var menuController: MenuController!
-    
+    private var cacheManager: CacheManager!
+
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        let cache = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)
+            .first
+            .flatMap(Directory.init)!
+        self.cacheManager = CacheManager(directory: cache)
+
         self.contextController = ContextController()
         
+        // Load cache
+        switch cacheManager.read(resource: ContextResource()) {
+        case let .success(contexts):
+            self.contextController.all.swap(contexts)
+        case let .failure(error):
+            print("Unable to load cache: \(error)")
+        }
+
         self.menuController = MenuController(statusItem: NSStatusBar.system().statusItem(withLength: NSSquareStatusItemLength), contextController: contextController)
 
         let documents = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first
@@ -24,6 +38,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.manager = ScreenshotsManager(monitor: Monitor(), contextController: contextController, root: root)
         
         disposable = manager.manage().logEvents().start()
+        
+        _ = contextController.all.producer.logEvents(identifier: "⚠️")
+            .attempt { contexts in
+                let raw: [[String: String]] = contexts.map { ["title": $0.title] }
+                try! self.cacheManager.write(raw, to: ContextResource())
+            }
+            .start()
     }
 
     func applicationWillTerminate(_ notification: Notification) {
