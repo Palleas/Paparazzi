@@ -3,6 +3,7 @@ import Foundation
 protocol ContextProtocol: AutoEquatable, AutoSluggable {
     
     /// The title of the context
+    /// sourcery: includeInSlug
     var title: String { get }
 
 }

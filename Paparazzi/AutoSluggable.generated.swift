@@ -17,6 +17,7 @@ extension Context {
 extension ContextProtocol {
     var slug: String {
         let _merged = [
+            title
         ].joined(separator: "-")
 
         return slugify(_merged)

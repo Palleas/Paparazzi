@@ -49,6 +49,8 @@ final class MenuController {
         
         let context = contexts[item.tag]
         print("You have selected \(context.title)")
+        
+        self.contextController.current.swap(context)
     }
     
     @objc

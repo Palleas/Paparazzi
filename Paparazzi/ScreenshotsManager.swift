@@ -2,6 +2,13 @@ import Foundation
 import ReactiveSwift
 import Result
 
+
+struct Directory: AutoSluggable {
+    // sourcery: includeInSlug
+    let path: String
+
+}
+
 final class ScreenshotsManager {
     
     enum ManagerError: Error {
@@ -9,15 +16,20 @@ final class ScreenshotsManager {
     }
     
     private let monitor: Monitor
-    
-    let context = MutableProperty<ContextProtocol>(DefaultContext())
+    private let contextController: ContextController
+    private let root: Directory
 
-    init(monitor: Monitor) {
+    init(monitor: Monitor, contextController: ContextController, root: Directory) {
         self.monitor = monitor
+        self.contextController = contextController
+        self.root = root
     }
     
     func manage() -> SignalProducer<(), ManagerError> {
-        return SignalProducer.combineLatest(newScreenshots().flatten(), context.producer)
+        let allScreenshots = newScreenshots().flatten()
+        let context = contextController.current.producer.skipNil()
+        
+        return SignalProducer.combineLatest(allScreenshots, context)
             .logEvents(identifier: "New Screenshots")
             .promoteErrors(ManagerError.self)
             .attemptMap(move)
@@ -25,10 +37,17 @@ final class ScreenshotsManager {
     
     func move(_ screenshot: ScreenShot, to context: ContextProtocol) -> Result<(), ManagerError>  {
         let manager = FileManager.default
-        
+
         // Add proper number
-        let target = (context.title as NSString).appendingPathComponent(UUID().uuidString)
         return Result {
+            let directory = (root.path as NSString).appendingPathComponent(context.slug)
+            if !manager.fileExists(atPath: directory) {
+                try manager.createDirectory(atPath: directory, withIntermediateDirectories: true, attributes: nil)
+                print("Created folder \(directory)")
+            }
+            print("Screenshots will be moved to \(directory)")
+            
+            let target = (directory as NSString).appendingPathComponent(UUID().uuidString)
             print("Moving file from \(screenshot.path) to \(target)")
             try manager.moveItem(atPath: screenshot.path, toPath: target)
         }

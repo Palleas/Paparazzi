@@ -5,7 +5,7 @@ import Result
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-    private let manager = ScreenshotsManager(monitor: Monitor())
+    private var manager: ScreenshotsManager!
     
     private var disposable: Disposable?
     private var menu = NSMenu(title: "Paparazzi")
@@ -14,10 +14,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private var menuController: MenuController!
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        let documents = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first
-        self.contextController = ContextController(root: documents.flatMap(Directory.init)!)
+        self.contextController = ContextController()
         
         self.menuController = MenuController(statusItem: NSStatusBar.system().statusItem(withLength: NSSquareStatusItemLength), contextController: contextController)
+
+        let documents = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first
+        let root = documents.flatMap(Directory.init)!
+        
+        self.manager = ScreenshotsManager(monitor: Monitor(), contextController: contextController, root: root)
         
         disposable = manager.manage().logEvents().start()
     }
