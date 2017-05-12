@@ -21,7 +21,7 @@ struct Directory: AutoSluggable {
 }
 
 
-final class CacheManager {
+final class FileSystem {
     
     enum CacheError: Error {
         case doesNotExist

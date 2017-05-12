@@ -12,13 +12,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     private var contextController: ContextController!
     private var menuController: MenuController!
-    private var cacheManager: CacheManager!
+    private var cacheManager: FileSystem!
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         let cache = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)
             .first
             .flatMap(Directory.init)!
-        self.cacheManager = CacheManager(directory: cache)
+        self.cacheManager = FileSystem(directory: cache)
 
         self.contextController = ContextController()
         
