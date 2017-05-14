@@ -23,8 +23,6 @@ class FileSystemSpec: QuickSpec {
             it("write resources") {
                 
             }
-            
-            it("count")
         }
     }
 }

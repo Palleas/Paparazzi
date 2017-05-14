@@ -19,6 +19,7 @@
     "permissions": [
         "tabs",
         "activeTab",
-        "https://paparazzi-upload.glitch.me/*"
+        "https://paparazzi-upload.glitch.me/*",
+        "http://localhost:8080/*"
     ]
 }

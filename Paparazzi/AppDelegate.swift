@@ -13,7 +13,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private var contextController: ContextController!
     private var menuController: MenuController!
     private var cacheManager: FileSystem!
-
+    private let server = Server()
+    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         let cache = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)
             .first
@@ -45,6 +46,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 try! self.cacheManager.write(raw, to: ContextResource())
             }
             .start()
+        
+        try! server.start()
     }
 
     func applicationWillTerminate(_ notification: Notification) {

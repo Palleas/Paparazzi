@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A072B5D1EC8D884000BDCCB /* Swifter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A072B5C1EC8D884000BDCCB /* Swifter.framework */; };
+		7A072B5E1EC8D884000BDCCB /* Swifter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7A072B5C1EC8D884000BDCCB /* Swifter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7A072B601EC8D89F000BDCCB /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A072B5F1EC8D89F000BDCCB /* Server.swift */; };
 		7A16BE2D1EBC457600D89485 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A16BE2C1EBC457600D89485 /* AppDelegate.swift */; };
 		7A16BE311EBC457600D89485 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A16BE301EBC457600D89485 /* Assets.xcassets */; };
 		7A16BE3F1EBC471100D89485 /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A16BE3D1EBC471100D89485 /* ReactiveSwift.framework */; };
@@ -56,6 +59,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				7AC49EF71EC66BC400A351D8 /* Unbox.framework in Embed Frameworks */,
+				7A072B5E1EC8D884000BDCCB /* Swifter.framework in Embed Frameworks */,
 				7A16BE401EBC471100D89485 /* ReactiveSwift.framework in Embed Frameworks */,
 				7A16BE421EBC471100D89485 /* Result.framework in Embed Frameworks */,
 			);
@@ -79,6 +83,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7A072B5C1EC8D884000BDCCB /* Swifter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Swifter.framework; path = Carthage/Build/Mac/Swifter.framework; sourceTree = "<group>"; };
+		7A072B5F1EC8D89F000BDCCB /* Server.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
 		7A16BE291EBC457600D89485 /* Paparazzi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Paparazzi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A16BE2C1EBC457600D89485 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7A16BE301EBC457600D89485 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -113,6 +119,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7AC49EF61EC66BC400A351D8 /* Unbox.framework in Frameworks */,
+				7A072B5D1EC8D884000BDCCB /* Swifter.framework in Frameworks */,
 				7A16BE3F1EBC471100D89485 /* ReactiveSwift.framework in Frameworks */,
 				7A16BE411EBC471100D89485 /* Result.framework in Frameworks */,
 			);
@@ -133,6 +140,7 @@
 		7A16BE201EBC457600D89485 = {
 			isa = PBXGroup;
 			children = (
+				7A072B5C1EC8D884000BDCCB /* Swifter.framework */,
 				7AC49EF81EC6786000A351D8 /* Nimble.framework */,
 				7AC49EF91EC6786000A351D8 /* Quick.framework */,
 				7AC49EF51EC66BC400A351D8 /* Unbox.framework */,
@@ -167,6 +175,7 @@
 				7A867E911EBE2EF1009E6512 /* MenuController.swift */,
 				7A3767A41EC36DA50062BCA5 /* ContextController.swift */,
 				7AC49EF31EC664F200A351D8 /* FileSystem.swift */,
+				7A072B5F1EC8D89F000BDCCB /* Server.swift */,
 			);
 			path = Paparazzi;
 			sourceTree = "<group>";
@@ -325,6 +334,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A072B601EC8D89F000BDCCB /* Server.swift in Sources */,
 				7A867E921EBE2EF1009E6512 /* MenuController.swift in Sources */,
 				7A867E7E1EBD6247009E6512 /* AutoEquatable.generated.swift in Sources */,
 				7A867E841EBD6BB7009E6512 /* Screenshot.swift in Sources */,

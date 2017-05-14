@@ -9,7 +9,7 @@ const takeScreenshot = () => {
 const uploadImage = (blob) => {
     let formData = new FormData();
     formData.append("screenshot", blob);
-    return qwest.post("https://paparazzi-upload.glitch.me/screenshot", formData);
+    return qwest.post("http://localhost:8080/screenshot", formData);
 };
 
 chrome.browserAction.onClicked.addListener(tab => {
