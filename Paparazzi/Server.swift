@@ -1,16 +1,19 @@
 import Foundation
 import Swifter
+import ReactiveSwift
+import Result
 
 final class Server {
     
+    enum ServerError: Error {
+        case startingError
+    }
+    
     private let server = HttpServer()
-
-    init() {
-        server.GET["/"] = { request in
-            print("Request = \(request)")
-            return HttpResponse.ok(.text("Send POST request to /screenshot"))
-        }
-        
+    
+    let feed = Signal<Data, NoError>.pipe()
+    
+    func startServer() throws {
         server.POST["/screenshot"] = { request  in
             let multiparts = request.parseMultiPartFormData()
             
@@ -19,15 +22,12 @@ final class Server {
             }
             
             let content = Data(bytes: file.body)
-            let filename = "\(UUID().uuid)-\(file.name ?? "")"
-            let desktop = URL(fileURLWithPath: NSHomeDirectory()).appendingPathComponent(filename)
-            try! content.write(to: desktop)
+
+            self.feed.input.send(value: content)
             
             return HttpResponse.ok(.text("OK"))
         }
-    }
-    func start() throws {
-        print("Starting server...")
+
         try server.start()
     }
 }

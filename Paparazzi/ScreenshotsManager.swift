@@ -33,17 +33,31 @@ final class ScreenshotsManager {
 
         // Add proper number
         return Result {
-            let directory = (root.path as NSString).appendingPathComponent(context.slug)
-            if !manager.fileExists(atPath: directory) {
-                try manager.createDirectory(atPath: directory, withIntermediateDirectories: true, attributes: nil)
-                print("Created folder \(directory)")
-            }
-            print("Screenshots will be moved to \(directory)")
+            let directory = try encureDirectory(for: context)
             
             let target = (directory as NSString).appendingPathComponent(UUID().uuidString)
             print("Moving file from \(screenshot.path) to \(target)")
             try manager.moveItem(atPath: screenshot.path, toPath: target)
         }
+    }
+
+    func write(_ screenshot: Data, to context: Context) -> Result<(), ManagerError>  {
+        return Result {
+            let directory = try encureDirectory(for: context)
+            
+            let target = (directory as NSString).appendingPathComponent(UUID().uuidString)
+            try screenshot.write(to: URL(fileURLWithPath: target))
+        }
+    }
+
+    func encureDirectory(for context: Context) throws -> String {
+        let directory = (root.path as NSString).appendingPathComponent(context.slug)
+        
+        guard !FileManager.default.fileExists(atPath: directory) else { return directory }
+        
+        try FileManager.default.createDirectory(atPath: directory, withIntermediateDirectories: true, attributes: nil)
+
+        return directory
     }
     
     func newScreenshots() -> SignalProducer<[ScreenShot], NoError> {
@@ -52,8 +66,8 @@ final class ScreenshotsManager {
         let newScreenshots = monitor
             .screenshots()
             .ignoreErrors()
-            .map { screenshots in screenshots
-                .filter { $0.changedAt >= startedAt }
+            .map { screenshots in
+                screenshots.filter { $0.changedAt >= startedAt }
             }
             .filter { !$0.isEmpty }
         

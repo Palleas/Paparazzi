@@ -47,7 +47,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
             .start()
         
-        try! server.start()
+        try! server.startServer()
+        let screenshots = SignalProducer(server.feed.output)
+        
+        SignalProducer.combineLatest(screenshots, contextController.current.producer.skipNil())
+            .attemptMap(self.manager.write)
+            .startWithResult { print("Write result = \($0)") }
     }
 
     func applicationWillTerminate(_ notification: Notification) {
